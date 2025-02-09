@@ -1,0 +1,267 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #6a5acd, #f0f2f5); /* Gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    animation: slideUp 0.5s ease-in-out; /* Add slide up animation */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hangman-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hangman-box img {
+    width: 200px;
+    transition: transform 0.2s ease;
+}
+
+.hangman-box img:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #3e4a59;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+h4 b {
+    font-weight: 600;
+}
+
+.game-box {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.word-display {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    letter-spacing: 5px; /* Improve readability */
+}
+
+.word-display li {
+    margin: 0 10px;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    font-size: 2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: revealLetter 0.5s ease-out forwards;
+}
+
+@keyframes revealLetter {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.keyboard {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.keyboard button {
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.keyboard button:hover {
+    background-color: #5a4bb0;
+    transform: translateY(-2px);
+}
+
+.keyboard button:active {
+    background-color: #4b3a99;
+    transform: translateY(1px);
+}
+
+.keyboard button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.guesses-text {
+    font-size: 1.1rem;
+    color: #8b8b8b;
+    margin-top: 10px;
+}
+
+.hint-text {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #6a5acd;
+}
+
+.play-again {
+    padding: 12px 30px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.play-again:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.play-again:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Game Over Modal */
+.game-model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.game-model.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-model .content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeInModal 0.5s ease-out;
+}
+
+@keyframes fadeInModal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.game-model img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.game-model h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.game-model p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.game-model button {
+    padding: 12px 25px;
+    background-color: #ff6347;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.game-model button:hover {
+    background-color: #ff4500;
+}
+
+/* Close Button for Modal */
+.game-model button.close {
+    background-color: #bbb;
+}
+
+.game-model button.close:hover {
+    background-color: #aaa;
+}
